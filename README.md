@@ -13,9 +13,9 @@ and the Flutter guide for
 # function_call_outcome
 <p align="center">
 	<a href="https://pub.dev/packages/flutter_call_outcome"><img src="https://img.shields.io/pub/v/flutter_call_outcome.svg" alt="Pub.dev Badge"></a>
-	<a href="https://github.com/CyberWake/flutter_call_outcome/actions"><img src="https://github.com/CyberWake/flutter_call_outcome/workflows/build/badge.svg" alt="GitHub Build Badge"></a>
+	<a href="https://github.com/CyberWake/flutter_call_outcome/actions"><img src="https://github.com/CyberWake/flutter_call_outcome/actions/workflows/build.yml/badge.svg" alt="GitHub Build Badge"></a>
 	<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="MIT License Badge"></a>
-	<a href="https://github.com/EdsonBueno/focus_detector"><img src="https://img.shields.io/badge/platform-flutter-ff69b4.svg" alt="Flutter Platform Badge"></a>
+	<a href="https://github.com/CyberWake/flutter_call_outcome"><img src="https://img.shields.io/badge/platform-flutter-ff69b4.svg" alt="Flutter Platform Badge"></a>
 </p>
 This is a dart package inspired by GoLang's response and error parsing functionality at the same time.
 This package provide with a datatype that can we used to return data and exception from a function call at the same time.
@@ -35,7 +35,7 @@ In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ```yaml
 dependencies:
-  function_call_outcome: ^0.0.1
+  function_call_outcome: ^0.0.1+1
 ```
 
 Than import the package via:
