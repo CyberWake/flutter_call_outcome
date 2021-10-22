@@ -24,7 +24,7 @@ To provide the flexibility with the datatype of the data field in the object you
 # 🛠Features
 
 - [x] return a data variable and exception from a function at the same time.
-- [X] make data strongly coupled to store in particular datatype value only.
+- [x] make data strongly coupled to store in particular datatype value only.
 - [ ] provide the ability to return multiple parameters which isn't supported in dart.
 
 # ⚡️Getting started
@@ -35,7 +35,7 @@ In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ```yaml
 dependencies:
-  function_call_outcome: ^0.0.1+1
+  function_call_outcome: ^0.0.2
 ```
 
 Than import the package via:
