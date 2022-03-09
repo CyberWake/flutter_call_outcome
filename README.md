@@ -35,7 +35,7 @@ In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ```yaml
 dependencies:
-  function_call_outcome: ^0.0.2
+  function_call_outcome: ^0.0.3
 ```
 
 Than import the package via:

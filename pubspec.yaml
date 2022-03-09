@@ -1,6 +1,6 @@
 name: flutter_call_outcome
 description: A dart package to simplify return data and exception from a function call
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/CyberWake/flutter_call_outcome.git
 
 environment:

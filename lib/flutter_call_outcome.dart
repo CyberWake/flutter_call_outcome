@@ -1,3 +1,4 @@
+/// flutter_call_outcome package
 library flutter_call_outcome;
 
 /// CallOutcome<T> Class.

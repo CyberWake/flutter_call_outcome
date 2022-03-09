@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.3.2
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
@@ -16,3 +16,28 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter analyze
+      - uses: dart-lang/setup-dart@v1
+      - run: dart analyze
+      - run: flutter pub global activate dartdoc
+      - run: flutter pub global run dartdoc .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: docs
+          path: doc/api
+      - name: rename docs folder
+        run: |
+          mv doc docs
+      - name: Set commit_id in env
+        run: |
+          echo "commit_id=$(echo $(git rev-parse HEAD))" >> $GITHUB_ENV
+      - name: Set email in env
+        run: |
+          echo "email=$(echo $(git log --pretty=format:"%ae" $commit_id))" >> $GITHUB_ENV
+      - name: update commit
+        run: |
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "${{env.email}}"
+
+          git add -A
+          git commit -m "Updated docs"
+          git push
