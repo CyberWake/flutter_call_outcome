@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 5.0.1">
+  <meta name="description" content="flutter_call_outcome API docs, for the Dart programming language.">
+  <title>flutter_call_outcome - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href=""
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/CyberWake/flutter_call_outcome.git">flutter_call_outcome package</a></li>
+  </ol>
+  <div class="self-name">flutter_call_outcome</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <!-- 
+This README describes the package. If you publish this package to pub.dev,
+this README's contents appear on the landing page for your package.
+
+For information about how to write a good package README, see the guide for
+[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+
+For general information about developing packages, see the Dart guide for
+[creating packages](https://dart.dev/guides/libraries/create-library-packages)
+and the Flutter guide for
+[developing packages and plugins](https://flutter.dev/developing-packages). 
+-->
+<h1 id="function_call_outcome">function_call_outcome</h1><p align="center">
+	<a href="https://pub.dev/packages/flutter_call_outcome"><img src="https://img.shields.io/pub/v/flutter_call_outcome.svg" alt="Pub.dev Badge"></a>
+	<a href="https://github.com/CyberWake/flutter_call_outcome/actions"><img src="https://github.com/CyberWake/flutter_call_outcome/actions/workflows/build.yml/badge.svg" alt="GitHub Build Badge"></a>
+	<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="MIT License Badge"></a>
+	<a href="https://github.com/CyberWake/flutter_call_outcome"><img src="https://img.shields.io/badge/platform-flutter-ff69b4.svg" alt="Flutter Platform Badge"></a>
+</p>
+This is a dart package inspired by GoLang's response and error parsing functionality at the same time.
+This package provide with a datatype that can we used to return data and exception from a function call at the same time.
+To provide the flexibility with the datatype of the data field in the object you can strongly couple the object to store a specific type of value by using a TypedConstructor.
+<h1 id="features">🛠Features</h1>
+<ul>
+<li><code>x</code> return a data variable and exception from a function at the same time.</li>
+<li><code>x</code> make data strongly coupled to store in particular datatype value only.</li>
+<li><code> </code> provide the ability to return multiple parameters which isn't supported in dart.</li>
+</ul>
+<h1 id="getting-started">⚡️Getting started</h1>
+<h2 id="installation">🎖Installation</h2>
+<p>In the <code>dependencies:</code> section of your <code>pubspec.yaml</code>, add the following line:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  function_call_outcome: ^0.0.3
+</code></pre>
+<p>Than import the package via:</p>
+<pre class="language-dart"><code class="language-dart">import 'package:function_call_outcome/function_call_outcome.dart';
+</code></pre>
+<h2 id="usage">🎮Usage</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:flutter/material.dart';
+import 'package:function_call_outcome/function_call_outcome.dart';
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() =&gt; _MyAppState();
+}
+
+class _MyAppState extends State&lt;MyApp&gt; {
+  bool isCallAsync = false;
+  int count = -1;
+  late CallOutcome&lt;String&gt; result;
+
+  Future&lt;CallOutcome&lt;String&gt;&gt; functionAsync()async{
+      Future.delayed(const Duration(milliseconds: 1500),(){
+      });
+      return CallOutcome(data: "Hello world from async");
+  }
+
+  CallOutcome&lt;String&gt; function(){
+      setState((){
+        count++;
+      });
+    print(count);
+      if(count%2==0){
+          return CallOutcome&lt;String&gt;(data: "Hello world from sync");
+      }else{
+          return CallOutcome&lt;String&gt;(exception: Exception("Hello world"));
+      }
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Text(count == -1?"Start":result.data??result.exception.toString())
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async{
+              if(isCallAsync){
+                result = await functionAsync();
+              }else{
+                result = function();
+              }
+              setState((){
+                isCallAsync = !isCallAsync;
+              });
+
+          },
+          child: const Icon(Icons.reply),
+          backgroundColor: Colors.green,
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+<h1 id="created-and-maintained-by">☀️Created and Maintained by:</h1>
+<p>Developed by:</p><table>
+<tbody><tr>
+<td align="center"><a href="https://github.com/CyberWake"><img src="https://avatars.githubusercontent.com/u/44184786?s=100" width="100px;" alt=""><br><sub><b>CyberWake</b></sub></a></td>
+</tr>
+</tbody></table>
+<br>
+<h1 id="issues--feedback">🐛Issues &amp; Feedback</h1>
+<p>Please file an <a href="https://github.com/CyberWake/flutter_call_outcome/issues">issue!</a> to send feedback or report a bug. Thank you!</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="flutter_call_outcome">
+  <span class="name"><a href="flutter_call_outcome/flutter_call_outcome-library.html">flutter_call_outcome</a></span> 
+
+</dt>
+<dd>flutter_call_outcome package 
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="https://github.com/CyberWake/flutter_call_outcome.git">flutter_call_outcome package</a></li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">flutter_call_outcome</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="flutter_call_outcome/flutter_call_outcome-library.html">flutter_call_outcome</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    flutter_call_outcome
+      0.0.3
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+
